@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -59,4 +60,14 @@ public class TagController {
                     return ResponseEntity.noContent().build();
                 }).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping
+    public ResponseEntity<List<GetTagDTO>> index(@RequestParam(value = "color", required = false) String color) {
+        List<Tag> index = service.index(color);
+
+        List<GetTagDTO> dtos = index.stream().map(mapper::toDTO).toList();
+
+        return ResponseEntity.ok(dtos);
+    }
+
 }
