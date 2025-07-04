@@ -5,6 +5,9 @@ import io.github.Guimaraes131.VroomApi.repository.TagRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class TagService {
@@ -13,5 +16,9 @@ public class TagService {
 
     public void create(Tag tag) {
         repository.save(tag);
+    }
+
+    public Optional<Tag> get(UUID id) {
+        return repository.findById(id);
     }
 }
