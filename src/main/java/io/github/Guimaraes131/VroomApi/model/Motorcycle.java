@@ -23,10 +23,13 @@ public class Motorcycle {
     @Column(name = "problem_description")
     private String problemDescription;
 
+    @Enumerated(EnumType.STRING)
     private MotorcycleModel model;
+
+    @Enumerated(EnumType.STRING)
     private ProblemCategory problem;
 
     @OneToOne
-    @JoinColumn(name = "tag_id")
+    @JoinColumn(name = "tag_id", nullable = false)
     private Tag tag;
 }
