@@ -13,9 +13,5 @@ public class Sector {
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     private String name;
-
-    @Column(name = "related_problem")
-    private ProblemCategory relatedProblem;
 }
