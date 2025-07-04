@@ -2,6 +2,7 @@ package io.github.Guimaraes131.VroomApi.service;
 
 import io.github.Guimaraes131.VroomApi.model.Tag;
 import io.github.Guimaraes131.VroomApi.repository.TagRepository;
+import io.github.Guimaraes131.VroomApi.validator.TagValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -16,8 +17,10 @@ import java.util.UUID;
 public class TagService {
 
     private final TagRepository repository;
+    private final TagValidator validator;
 
     public void create(Tag tag) {
+        validator.validate(tag);
         repository.save(tag);
     }
 
