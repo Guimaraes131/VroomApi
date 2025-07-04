@@ -15,6 +15,6 @@ public class Tag {
     private UUID id;
 
     private String coordinate;
-    private Color color;
+    private String color;
     private boolean available;
 }
