@@ -47,4 +47,16 @@ public class TagController {
                     return ResponseEntity.ok(dto);
                 }).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") String id) {
+        UUID entityId = UUID.fromString(id);
+
+        return service.get(entityId)
+                .map(tag -> {
+                    service.delete(tag);
+
+                    return ResponseEntity.noContent().build();
+                }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

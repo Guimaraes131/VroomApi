@@ -21,4 +21,8 @@ public class TagService {
     public Optional<Tag> get(UUID id) {
         return repository.findById(id);
     }
+
+    public void delete(Tag tag) {
+        repository.delete(tag);
+    }
 }
