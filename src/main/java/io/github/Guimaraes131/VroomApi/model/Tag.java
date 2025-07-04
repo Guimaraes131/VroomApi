@@ -17,5 +17,5 @@ public class Tag {
     private String color;
 
     @Column(name = "is_available")
-    private boolean isAvailable;
+    private Boolean isAvailable;
 }
