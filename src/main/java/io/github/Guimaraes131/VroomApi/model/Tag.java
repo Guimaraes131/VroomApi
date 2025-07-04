@@ -16,5 +16,7 @@ public class Tag {
 
     private String coordinate;
     private String color;
-    private boolean available;
+
+    @Column(name = "is_available")
+    private boolean isAvailable;
 }
