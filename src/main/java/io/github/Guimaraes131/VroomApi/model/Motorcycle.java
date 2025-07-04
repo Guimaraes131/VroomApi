@@ -29,8 +29,4 @@ public class Motorcycle {
     @OneToOne
     @JoinColumn(name = "tag_id")
     private Tag tag;
-
-    @ManyToOne
-    @JoinColumn(name = "sector_id")
-    private Sector sector;
 }
