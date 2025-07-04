@@ -5,6 +5,7 @@ import io.github.Guimaraes131.VroomApi.controller.dto.PostTagDTO;
 import io.github.Guimaraes131.VroomApi.controller.mapper.TagMapper;
 import io.github.Guimaraes131.VroomApi.model.Tag;
 import io.github.Guimaraes131.VroomApi.service.TagService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class TagController {
     private final TagMapper mapper;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody PostTagDTO dto) {
+    public ResponseEntity<Void> create(@RequestBody @Valid PostTagDTO dto) {
         Tag entity = mapper.toEntity(dto);
 
         service.create(entity);
@@ -69,5 +70,4 @@ public class TagController {
 
         return ResponseEntity.ok(dtos);
     }
-
 }
