@@ -1,0 +1,20 @@
+package io.github.Guimaraes131.VroomApi.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.awt.*;
+import java.util.UUID;
+
+@Entity
+@Data
+@Table(name = "tb_tag")
+public class Tag {
+
+    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    private String coordinate;
+    private Color color;
+    private boolean available;
+}
