@@ -3,7 +3,6 @@ package io.github.Guimaraes131.VroomApi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.awt.*;
 import java.util.UUID;
 
 @Entity
