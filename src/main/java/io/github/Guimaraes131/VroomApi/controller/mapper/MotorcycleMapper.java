@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Mapper(componentModel = "spring", uses = TagMapper.class)
+@Mapper(componentModel = "spring", uses = TagRepository.class)
 public abstract class MotorcycleMapper {
 
     @Autowired
@@ -20,6 +20,7 @@ public abstract class MotorcycleMapper {
 
     public abstract GetMotorcycleDTO toDTO(Motorcycle entity);
 
-    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "tag", expression = "java( repository.findById(dto.tagId()).orElse(null) )")
     public abstract void updateFromDTO(PostMotorcycleDTO dto, @MappingTarget Motorcycle entity);
+
 }

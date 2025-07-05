@@ -14,7 +14,7 @@ public class MotorcycleValidator {
 
     public void validate(Motorcycle motorcycle) {
         if (tagIsNotAvailable(motorcycle)) {
-            throw new InvalidOperationException("Cannot create a motorcycle with a tag that is being used.");
+            throw new InvalidOperationException("Cannot create or update a motorcycle with a tag that is being used.");
         }
     }
 

@@ -53,6 +53,8 @@ public class MotorcycleService {
     }
 
     public void update(Motorcycle motorcycle) {
+        validator.validate(motorcycle);
+        motorcycle.getTag().setColor(motorcycle.getProblem().getAssociatedColor());
         repository.save(motorcycle);
     }
 }
