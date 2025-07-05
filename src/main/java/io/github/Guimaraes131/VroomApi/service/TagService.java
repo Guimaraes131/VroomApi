@@ -1,5 +1,6 @@
 package io.github.Guimaraes131.VroomApi.service;
 
+import io.github.Guimaraes131.VroomApi.exception.InvalidOperationException;
 import io.github.Guimaraes131.VroomApi.model.Tag;
 import io.github.Guimaraes131.VroomApi.repository.TagRepository;
 import io.github.Guimaraes131.VroomApi.validator.TagValidator;
@@ -34,6 +35,10 @@ public class TagService {
     }
 
     public void delete(Tag tag) {
+        if (!tag.isDeletable()) {
+            throw new InvalidOperationException("Cannot delete a Tag that is being used.");
+        }
+
         repository.delete(tag);
     }
 

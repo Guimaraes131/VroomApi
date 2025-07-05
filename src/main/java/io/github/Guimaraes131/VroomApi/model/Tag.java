@@ -18,4 +18,8 @@ public class Tag {
 
     @Column(name = "is_available")
     private Boolean isAvailable;
+
+    public boolean isDeletable() {
+        return this.isAvailable;
+    }
 }
