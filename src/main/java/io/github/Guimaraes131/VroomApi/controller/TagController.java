@@ -18,7 +18,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/tags")
 @RequiredArgsConstructor
-public class TagController {
+public class TagController implements GenericController {
 
     private final TagService service;
     private final TagMapper mapper;
@@ -26,16 +26,9 @@ public class TagController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody @Valid PostTagDTO dto) {
         Tag entity = mapper.toEntity(dto);
-
         service.create(entity);
 
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(entity.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(generateHeaderLocation(entity.getId())).build();
     }
 
     @GetMapping("/{id}")
