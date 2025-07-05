@@ -21,6 +21,11 @@ public class TagService {
 
     public void create(Tag tag) {
         validator.validate(tag);
+
+        if (tag.getIsAvailable()) {
+            tag.setColor(null);
+        }
+
         repository.save(tag);
     }
 
