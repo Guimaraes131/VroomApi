@@ -35,6 +35,7 @@ public class MotorcycleService {
 
     public void delete(Motorcycle motorcycle) {
         motorcycle.getTag().setIsAvailable(true);
+        motorcycle.getTag().setColor(null);
         repository.delete(motorcycle);
     }
 
