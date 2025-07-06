@@ -4,18 +4,26 @@ import io.github.Guimaraes131.VroomApi.exception.DuplicatedRecordException;
 import io.github.Guimaraes131.VroomApi.exception.InvalidOperationException;
 import io.github.Guimaraes131.VroomApi.model.Motorcycle;
 import io.github.Guimaraes131.VroomApi.repository.MotorcycleRepository;
+import io.github.Guimaraes131.VroomApi.repository.TagRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
 public class MotorcycleValidator {
 
     private final MotorcycleRepository repository;
+    private final TagRepository tagRepository;
 
     public void validate(Motorcycle motorcycle) {
+        if (existsTag(motorcycle)) {
+            throw new EntityNotFoundException("Tag not found.");
+        }
+
         if (existsMotorcycle(motorcycle)) {
             throw new DuplicatedRecordException("Cannot proceed: data is already in use by another record.");
         }
@@ -39,5 +47,9 @@ public class MotorcycleValidator {
         }
 
         return optionalMotorcycle.isPresent() && !motorcycle.getId().equals(optionalMotorcycle.get().getId());
+    }
+
+    private boolean existsTag(Motorcycle motorcycle) {
+        return motorcycle.getTag() == null;
     }
 }
