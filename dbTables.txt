@@ -16,3 +16,10 @@ CREATE TABLE tb_motorcycle(
 	CONSTRAINT chk_model CHECK (model in ('MOTTUPOP', 'MOTTUSPORT', 'MOTTUE')),
 	CONSTRAINT chk_problem CHECK (problem in ('MECHANICAL', 'ELECTRICAL', 'DOCUMENTATION', 'AESTHETIC', 'SAFETY', 'MULTIPLE', 'COMPLIANT'))
 );
+
+CREATE TABLE tb_user (
+    id UUID NOT NULL PRIMARY KEY,
+    login VARCHAR(20) NOT NULL UNIQUE,
+    password VARCHAR(300) NOT NULL,
+    roles VARCHAR[]
+);
