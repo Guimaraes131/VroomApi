@@ -8,6 +8,7 @@ import io.github.Guimaraes131.VroomApi.service.TagService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class TagController implements GenericController {
     private final TagMapper mapper;
 
     @PostMapping
+    @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<Void> create(@RequestBody @Valid PostTagDTO dto) {
         Tag entity = mapper.toEntity(dto);
         service.create(entity);
@@ -30,6 +32,7 @@ public class TagController implements GenericController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<GetTagDTO> get(@PathVariable("id") String id) {
         UUID entityId = UUID.fromString(id);
 
@@ -42,6 +45,7 @@ public class TagController implements GenericController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<?> delete(@PathVariable("id") String id) {
         UUID entityId = UUID.fromString(id);
 
@@ -54,6 +58,7 @@ public class TagController implements GenericController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<List<GetTagDTO>> index(@RequestParam(value = "color", required = false) String color) {
         List<Tag> index = service.index(color);
 
