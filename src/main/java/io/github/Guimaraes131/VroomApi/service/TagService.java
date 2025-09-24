@@ -55,4 +55,8 @@ public class TagService {
 
         return repository.findAll(example);
     }
+
+    public List<Tag> findAll() {
+        return repository.findAll();
+    }
 }

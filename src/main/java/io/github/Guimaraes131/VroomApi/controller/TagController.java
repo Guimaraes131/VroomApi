@@ -58,9 +58,8 @@ public class TagController implements GenericController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
-    public ResponseEntity<List<GetTagDTO>> index(@RequestParam(value = "color", required = false) String color) {
-        List<Tag> index = service.index(color);
+    public ResponseEntity<List<GetTagDTO>> index() {
+        List<Tag> index = service.findAll();
 
         List<GetTagDTO> dtos = index.stream().map(mapper::toDTO).toList();
 

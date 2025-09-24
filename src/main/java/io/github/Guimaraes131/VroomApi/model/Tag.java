@@ -19,6 +19,9 @@ public class Tag {
     @Column(name = "is_available")
     private Boolean isAvailable;
 
+    @OneToOne(mappedBy = "tag")
+    private Motorcycle motorcycle;
+
     public boolean isDeletable() {
         return this.isAvailable;
     }
