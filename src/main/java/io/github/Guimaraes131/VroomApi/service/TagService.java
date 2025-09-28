@@ -24,7 +24,7 @@ public class TagService {
         validator.validate(tag);
 
         if (tag.getIsAvailable()) {
-            tag.setColor(null);
+            tag.setColor("rgb(230 230 230)");
         }
 
         repository.save(tag);
