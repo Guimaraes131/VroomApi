@@ -42,21 +42,7 @@ public class TagService {
         repository.delete(tag);
     }
 
-    public List<Tag> index(String color) {
-        Tag tag = new Tag();
-        tag.setColor(color);
-
-        ExampleMatcher matcher = ExampleMatcher.matching()
-                .withIgnoreNullValues()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.EXACT);
-
-        Example<Tag> example = Example.of(tag, matcher);
-
-        return repository.findAll(example);
-    }
-
-    public List<Tag> findAll() {
-        return repository.findAll();
+    public List<Tag> index() {
+        return repository.findAllByOrderByCoordinateAsc();
     }
 }

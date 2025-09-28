@@ -23,7 +23,6 @@ public class MotorcycleController implements GenericController {
     private final MotorcycleMapper mapper;
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<Void> create(@RequestBody PostMotorcycleDTO dto) {
         Motorcycle entity = mapper.toEntity(dto);
         service.create(entity);
@@ -32,7 +31,6 @@ public class MotorcycleController implements GenericController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<GetMotorcycleDTO> get(@PathVariable("id") String id) {
         UUID uuid = UUID.fromString(id);
 
@@ -45,7 +43,6 @@ public class MotorcycleController implements GenericController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<?> delete(@PathVariable("id") String id) {
         UUID uuid = UUID.fromString(id);
 
@@ -58,7 +55,6 @@ public class MotorcycleController implements GenericController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<List<GetMotorcycleDTO>> index(
             @RequestParam(required = false, value = "problem") ProblemCategory problem) {
 
@@ -72,7 +68,6 @@ public class MotorcycleController implements GenericController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('MANAGER', 'OPERATOR')")
     public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody PostMotorcycleDTO dto) {
         UUID uuid = UUID.fromString(id);
 

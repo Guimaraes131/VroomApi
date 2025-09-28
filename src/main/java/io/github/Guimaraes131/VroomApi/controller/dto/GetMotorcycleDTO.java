@@ -13,6 +13,6 @@ public record GetMotorcycleDTO(
         String problemDescription,
         MotorcycleModel model,
         ProblemCategory problem,
-        Tag tag
+        GetTagDTO tag
 ) {
 }
