@@ -11,7 +11,6 @@ public record GetMotorcycleDTO(
         String chassis,
         String problemDescription,
         MotorcycleModel model,
-        ProblemCategory problem,
-        GetTagDTO tag
+        ProblemCategory problem
 ) {
 }
