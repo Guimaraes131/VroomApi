@@ -5,8 +5,6 @@ import io.github.Guimaraes131.VroomApi.model.Tag;
 import io.github.Guimaraes131.VroomApi.repository.TagRepository;
 import io.github.Guimaraes131.VroomApi.validator.TagValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

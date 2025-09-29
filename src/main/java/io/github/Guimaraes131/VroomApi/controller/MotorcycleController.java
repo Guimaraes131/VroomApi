@@ -8,7 +8,6 @@ import io.github.Guimaraes131.VroomApi.model.enums.ProblemCategory;
 import io.github.Guimaraes131.VroomApi.service.MotorcycleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
