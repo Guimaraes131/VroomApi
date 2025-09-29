@@ -6,5 +6,6 @@ public record GetTagDTO(
         UUID id,
         String coordinate,
         String color,
-        Boolean isAvailable) {
+        Boolean isAvailable,
+        UUID motorcycleId) {
 }
