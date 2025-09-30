@@ -24,14 +24,6 @@ public class MotorcycleValidator {
         if (existsMotorcycle(motorcycle)) {
             throw new DuplicatedRecordException("Cannot proceed: data is already in use by another record.");
         }
-
-        if (!tagIsAvailable(motorcycle)) {
-            throw new InvalidOperationException("Cannot create or update a motorcycle with a tag that is being used.");
-        }
-    }
-
-    private boolean tagIsAvailable(Motorcycle motorcycle) {
-        return motorcycle.getTag().getIsAvailable();
     }
 
     private boolean existsMotorcycle(Motorcycle motorcycle) {
