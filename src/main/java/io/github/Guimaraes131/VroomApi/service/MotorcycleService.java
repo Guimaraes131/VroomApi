@@ -3,7 +3,9 @@ package io.github.Guimaraes131.VroomApi.service;
 import io.github.Guimaraes131.VroomApi.model.Motorcycle;
 import io.github.Guimaraes131.VroomApi.model.enums.ProblemCategory;
 import io.github.Guimaraes131.VroomApi.repository.MotorcycleRepository;
+import io.github.Guimaraes131.VroomApi.repository.TagRepository;
 import io.github.Guimaraes131.VroomApi.validator.MotorcycleValidator;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -19,6 +21,7 @@ public class MotorcycleService {
 
     private final MotorcycleRepository repository;
     private final MotorcycleValidator validator;
+    private final TagRepository tagRepository;
 
     public void create(Motorcycle motorcycle) {
         validator.validate(motorcycle);
@@ -34,8 +37,15 @@ public class MotorcycleService {
     }
 
     public void delete(Motorcycle motorcycle) {
-        motorcycle.getTag().setIsAvailable(true);
-        motorcycle.getTag().setColor(null);
+        var tag = tagRepository.findById(motorcycle.getTag().getId())
+                .orElseThrow(
+                        () -> new IllegalStateException("Tag não encontrada.")
+                );
+
+        tag.setIsAvailable(true);
+        tag.setColor("rgb(230, 230, 230)");
+        tag.setMotorcycle(null);
+
         repository.delete(motorcycle);
     }
 
