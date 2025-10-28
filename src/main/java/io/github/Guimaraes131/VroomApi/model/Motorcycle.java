@@ -12,8 +12,8 @@ import java.util.UUID;
 @Table(name = "tb_motorcycle")
 public class Motorcycle {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "license_plate")
     private String licensePlate;

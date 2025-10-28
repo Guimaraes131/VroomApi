@@ -10,8 +10,8 @@ import java.util.UUID;
 @Table(name = "tb_tag")
 public class Tag {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String coordinate;
     private String color;

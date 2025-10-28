@@ -11,5 +11,5 @@ public record PostMotorcycleDTO(
         String problemDescription,
         MotorcycleModel model,
         ProblemCategory problem,
-        UUID tagId) {
+        Long tagId) {
 }

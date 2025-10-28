@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +27,7 @@ public class TagService {
         repository.save(tag);
     }
 
-    public Optional<Tag> get(UUID id) {
+    public Optional<Tag> get(Long id) {
         return repository.findById(id);
     }
 

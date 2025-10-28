@@ -30,10 +30,9 @@ public class MotorcycleController implements GenericController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetMotorcycleDTO> get(@PathVariable("id") String id) {
-        UUID uuid = UUID.fromString(id);
+    public ResponseEntity<GetMotorcycleDTO> get(@PathVariable("id") Long id) {
 
-        return service.get(uuid)
+        return service.get(id)
                 .map(entity -> {
                     GetMotorcycleDTO dto = mapper.toDTO(entity);
 
@@ -42,10 +41,9 @@ public class MotorcycleController implements GenericController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") String id) {
-        UUID uuid = UUID.fromString(id);
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 
-        return service.get(uuid)
+        return service.get(id)
                 .map(entity -> {
                     service.delete(entity);
 
@@ -67,10 +65,9 @@ public class MotorcycleController implements GenericController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") String id, @RequestBody PostMotorcycleDTO dto) {
-        UUID uuid = UUID.fromString(id);
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody PostMotorcycleDTO dto) {
 
-        return service.get(uuid)
+        return service.get(id)
                 .map(entity -> {
                     mapper.updateFromDTO(dto, entity);
 

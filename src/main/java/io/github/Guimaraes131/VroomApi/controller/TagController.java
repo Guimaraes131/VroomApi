@@ -29,10 +29,9 @@ public class TagController implements GenericController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetTagDTO> get(@PathVariable("id") String id) {
-        UUID entityId = UUID.fromString(id);
+    public ResponseEntity<GetTagDTO> get(@PathVariable("id") Long id) {
 
-        return service.get(entityId)
+        return service.get(id)
                 .map(tag -> {
                     GetTagDTO dto = mapper.toDTO(tag);
 
@@ -41,10 +40,9 @@ public class TagController implements GenericController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") String id) {
-        UUID entityId = UUID.fromString(id);
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 
-        return service.get(entityId)
+        return service.get(id)
                 .map(tag -> {
                     service.delete(tag);
 

@@ -5,7 +5,6 @@ import io.github.Guimaraes131.VroomApi.model.enums.ProblemCategory;
 import io.github.Guimaraes131.VroomApi.repository.MotorcycleRepository;
 import io.github.Guimaraes131.VroomApi.repository.TagRepository;
 import io.github.Guimaraes131.VroomApi.validator.MotorcycleValidator;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +30,7 @@ public class MotorcycleService {
         repository.save(motorcycle);
     }
 
-    public Optional<Motorcycle> get(UUID id) {
+    public Optional<Motorcycle> get(Long id) {
         return repository.findById(id);
     }
 

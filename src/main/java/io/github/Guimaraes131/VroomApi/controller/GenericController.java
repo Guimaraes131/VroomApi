@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface GenericController {
 
-    default URI generateHeaderLocation(UUID id) {
+    default URI generateHeaderLocation(Long id) {
         return ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(id)
