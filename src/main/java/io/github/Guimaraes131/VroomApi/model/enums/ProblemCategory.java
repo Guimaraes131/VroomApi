@@ -8,11 +8,9 @@ public enum ProblemCategory {
     ELECTRICAL("rgb(0, 0, 255)"),
     DOCUMENTATION("rgb(0, 255, 0)"),
     AESTHETIC("rgb(255, 255, 0)"),
-    SAFETY("rgb(255, 165, 0)"),
-    MULTIPLE("rgb(255, 192, 203)"),
-    COMPLIANT("rgb(255, 255, 255)");
-
-    // We'll use the RGB later to change the color of the TAG's LED.
+    SAFETY("rgb(255, 50, 0)"),
+    MULTIPLE("rgb(150, 0, 0)"),
+    COMPLIANT("rgb(130, 0, 255)");
 
     private final String associatedColor;
 

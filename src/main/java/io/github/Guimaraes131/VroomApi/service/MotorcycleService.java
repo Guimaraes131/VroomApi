@@ -41,7 +41,7 @@ public class MotorcycleService {
                 );
 
         tag.setIsAvailable(true);
-        tag.setColor("rgb(230, 230, 230)");
+        tag.setColor("rgb(245, 245, 245)");
         tag.setMotorcycle(null);
 
         repository.delete(motorcycle);
